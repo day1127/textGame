@@ -1,15 +1,18 @@
 import random
+import os
+
 
 def d6():
-    return random.randint(1, 6)
+    return random.randint(1,6)
 
 def fourD6MinusLow():
     rolls = []
     for i in range(4):
         rolls.append(d6())
-        rolls.sort(reverse = True)
-        rolls.pop()
-        return sum(rolls)
+    rolls.sort(reverse = True)
+    rolls.pop()
+    return sum(rolls)
+
 
 class character:
 
@@ -21,12 +24,41 @@ class character:
         self.chr = charisma
         self.str = strength
         self.dex = dexterity
-        self.getStats()
 
-
+        if self.chr == 0 and self.str == 0 and self.dex == 0:
+            self.getStats()
 
     def addToInv(self, item):
         self.inventory.append(item)
+
+    def dropItem(self):
+        menuCounter = 1
+        for inventoryItem in self.inventory:
+            print(f"{menuCounter}, {inventoryItem}")
+            menuCounter += 1
+
+        choice = input ("What are you dropping?: ")
+        try:
+            choice = int(choice)
+            temp = self.inventory[choice -1]
+            self.inventory.remove(self.inventory[choice -1])
+            print(temp, 'removed')
+            temp = input("Hit ENTER to continue")
+
+
+        except ValueError:
+            if choice in self.inventory:
+                self.inventory.remove(choice)
+                print(choice, "removed")
+                temp = input("Hit ENTER to continue")
+            elif choice == "nothing" or "none" or "nither":
+                print("nothing was dropped")
+                temp = input ("Hit ENTER to continue")
+
+        except IndexError:
+            print("Sorry that dose not exist")
+            temp = input("Hit ENTER to continue")
+            self.dropItem()
 
 
     def getStats(self):
@@ -36,10 +68,24 @@ class character:
 
 
     def __str__(self):
-        return f"{self.name} has {self.Hp} Hp, and {self.inventory} in their inventory, they have {self.chr} charisma, {self.str} strength, and {self.dex} dexterity"
+        os.system('cls' if os.name == 'nt' else 'clear')
+        return f"{self.name} has {self.Hp} Hp and {self.stam} stamina\n {self.chr} charisma, {self.str} strength {self.dex} dexterity\n {self.inventory}"
+
+    def printInv(self):
+        return self.inventory
+
 
 if __name__ == "__main__":
     a = character("Jeff")
 
     a.addToInv("sword")
+    a.addToInv("torch")
+    a.addToInv("rations")
+    a.addToInv("shield")
+    a.addToInv("water")
+
     print (a.__str__())
+
+    a.dropItem()
+
+    print(a.printInv())
