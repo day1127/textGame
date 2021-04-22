@@ -83,8 +83,9 @@ if __name__ == "__main__":
     a.addToInv("rations")
     a.addToInv("shield")
     a.addToInv("water")
+    a.addToInv("coffee")
 
-    print (a.__str__())
+    print(a.__str__())
 
     a.dropItem()
 
