@@ -1,5 +1,6 @@
 import random
 import os
+from config.data import gear
 
 
 def d6():
@@ -85,7 +86,7 @@ if __name__ == "__main__":
     a.addToInv("water")
     a.addToInv("coffee")
 
-    print(a.__str__())
+    print(a)
 
     a.dropItem()
 
