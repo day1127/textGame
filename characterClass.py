@@ -1,6 +1,6 @@
 import random
 import os
-from config.data import gear
+import items
 
 
 def d6():

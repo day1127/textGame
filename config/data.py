@@ -22,7 +22,8 @@ gear = {
     'Knife': "False, True, 10, 4, False, False, -1, True, False",
     'Hammer': "False, True, 6, 6, False, False, -1, True, False",
     'Bandages': "False, False, 0, 10, True, False, 10, False, False",
-    'Flashlight': "True, True, 10, 2, False, False, -1, True, False"
+    'Flashlight': "True, True, 10, 2, False, False, -1, True, False",
+    'Sword': "False, True, 3, 10, False, False, -1, True, False"
 
 
 }
