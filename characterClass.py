@@ -1,5 +1,6 @@
 import random
 import os
+from config.data import gear
 import items
 
 
@@ -17,7 +18,7 @@ def fourD6MinusLow():
 
 class character:
 
-    def __init__(self, name, Hp = 100, stamina = 100, charisma = 0, strength = 0, dexterity = 0):
+    def __init__(self, name, charisma = 0, strength = 0, dexterity = 0, Hp = 100, stamina = 100):
         self.name = name
         self.Hp = Hp
         self.inventory = []
@@ -75,19 +76,49 @@ class character:
     def printInv(self):
         return self.inventory
 
+    def inspect(self):
+        MenuCounter = 1
+        for inventoryItem in self.inventory:
+            print(f"{MenuCounter}, {inventoryItem}")
+            MenuCounter += 1
+
+        choice = input ("What are you inspecting?: ")
+        try:
+            choice = int(choice)
+            #temp = self.inventory[choice -1]
+            inspected = gear[self.inventory[choice -1]].split(", ")
+            print(inspected)
+            temp = input("Hit ENTER to continue")
+
+        except ValueError:
+            if choice in self.inventory:
+                inspected = gear[choice].split(", ")
+                print(inspected)
+                #print(choice, "removed")
+                temp = input("Hit ENTER to continue")
+            elif choice == "nothing" or "none" or "nither":
+                print("nothing was inspected")
+                temp = input ("Hit ENTER to continue")
+
+
+
+
+
+
 
 if __name__ == "__main__":
     a = character("Jeff")
 
-    a.addToInv("sword")
-    a.addToInv("torch")
-    a.addToInv("rations")
-    a.addToInv("shield")
-    a.addToInv("water")
-    a.addToInv("coffee")
+    a.addToInv("Sword")
+    a.addToInv("Torch")
+    a.addToInv("Rations")
+    a.addToInv("Shield")
+    a.addToInv("Water")
+    a.addToInv("Coffee")
 
     print(a)
 
-    a.dropItem()
+    #a.dropItem()
+    a.inspect()
 
-    print(a.printInv())
+    #print(a.printInv())

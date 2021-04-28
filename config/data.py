@@ -23,7 +23,12 @@ gear = {
     'Hammer': "False, True, 6, 6, False, False, -1, True, False",
     'Bandages': "False, False, 0, 10, True, False, 10, False, False",
     'Flashlight': "True, True, 10, 2, False, False, -1, True, False",
-    'Sword': "False, True, 3, 10, False, False, -1, True, False"
+    'Sword': "False, True, 3, 10, False, False, -1, True, False",
+    'Torch': "True, True, 6, 5, False, False, -1, True, False",
+    'Rations': "False, False, 0, 5, True, False, 5, False, False",
+    'Shield': "False, True, 1, 4, False, True -1, True, False",
+    'Water': "False, False, 0, 3, True, False, 3, False, False",
+    'Coffee': "False, False, 0, 15, True False 1, False, False"
 
 
 }
